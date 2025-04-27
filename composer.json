@@ -1,0 +1,23 @@
+{
+  "name": "tourze/yield-breakable-caller",
+  "description": "BreakableCaller, using Yield",
+  "type": "library",
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0",
+    "phpstan/phpstan": "^2.1"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Tourze\\YieldBreakableCaller\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tourze\\YieldBreakableCaller\\Tests\\": "tests/"
+    }
+  }
+}
