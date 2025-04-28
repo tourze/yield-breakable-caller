@@ -1,63 +1,104 @@
 # YieldBreakableCaller
 
-一个基于 yield 的可中断调用器，支持在执行过程中根据条件中断任务。
+A lightweight PHP library for breakable step-by-step task execution using Generators (yield). Allows interruption of task flow at any step based on custom conditions.
 
-## 安装
+---
+
+## Project Status
+
+![Packagist Version](https://img.shields.io/packagist/v/tourze/yield-breakable-caller)
+![License](https://img.shields.io/github/license/tourze/yield-breakable-caller)
+
+---
+
+## Features
+
+- Step-by-step task execution based on PHP Generator (yield)
+- Interrupt task flow at any step by custom logic
+- Simple, dependency-free implementation
+- Suitable for scenarios requiring controllable breakpoints in process
+
+---
+
+## Installation
+
+- Requires PHP >= 8.1
+- Install via Composer:
 
 ```bash
 composer require tourze/yield-breakable-caller
 ```
 
-## 使用方法
+---
+
+## Quick Start
 
 ```php
 use Tourze\YieldBreakableCaller\BreakableCaller;
 
 $caller = new BreakableCaller();
 
-// 创建一个生成器函数
 $task = function () {
-    echo "步骤 1 开始执行\n";
+    echo "Step 1 executing\n";
     yield;
-    
-    echo "步骤 2 开始执行\n";
+    echo "Step 2 executing\n";
     yield;
-    
-    echo "步骤 3 开始执行\n";
+    echo "Step 3 executing\n";
     yield;
-    
-    echo "步骤 4 开始执行\n";
+    echo "Step 4 executing\n";
 };
 
-// 中断条件
 $shouldContinue = function () {
-    // 这里可以添加任何条件判断
     static $count = 0;
     $count++;
-    return $count < 3; // 在执行到第三步时中断
+    return $count < 3; // Interrupt after 3rd step
 };
 
-// 执行任务
 $caller->invoke($task, $shouldContinue);
 ```
 
-以上代码将输出：
+Output:
 
 ```
-步骤 1 开始执行
-步骤 2 开始执行
-步骤 3 开始执行
+Step 1 executing
+Step 2 executing
+Step 3 executing
 ```
 
-步骤 4 不会被执行，因为在第三步后条件判断为 false，任务被中断。
+---
 
-## 特性
+## Documentation
 
-- 使用 PHP Generator (yield) 实现的任务步骤管理
-- 支持在任意步骤中断任务执行
-- 简单轻量的实现，无额外依赖
-- 适用于需要分步执行并可能需要中断的任务场景
+### Core API
 
-## 许可证
+#### `BreakableCaller::invoke(callable $callback, callable $shouldNext): void`
+
+- `$callback`: A function returning a generator
+- `$shouldNext`: A callback to determine whether to continue after each step
+
+### Behavior
+
+- After each `yield`, `$shouldNext` is evaluated. If it returns `false`, all subsequent steps are interrupted.
+- Supports empty generators, single-yield generators, and will throw if callback does not return a generator.
+
+---
+
+## Contributing
+
+- Issues and PRs are welcome
+- Follow PSR coding standards
+- Tests should cover main features
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Changelog
+
+See [CHANGELOG.md] if available.
 
 MIT
