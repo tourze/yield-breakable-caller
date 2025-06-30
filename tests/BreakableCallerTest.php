@@ -4,6 +4,7 @@ namespace Tourze\YieldBreakableCaller\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Tourze\YieldBreakableCaller\BreakableCaller;
+use Tourze\YieldBreakableCaller\Exception\GeneratorException;
 
 /**
  * BreakableCaller 类的单元测试
@@ -97,9 +98,11 @@ class BreakableCallerTest extends TestCase
 
         $callback = function () use (&$executed) {
             $executed = true;
-            // 空生成器，没有 yield 语句
-            return;
-            yield;
+            // 空生成器，有 yield 但不可达
+            /** @phpstan-ignore-next-line if.alwaysFalse */
+            if (false) {
+                yield;
+            }
         };
 
         $shouldNext = fn() => true;
@@ -184,15 +187,14 @@ class BreakableCallerTest extends TestCase
      */
     public function testInvoke_WithGeneratorThrowingException(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(GeneratorException::class);
         $this->expectExceptionMessage('Exception from generator');
 
         $caller = new BreakableCaller();
 
         $callback = function () {
             yield;
-            throw new \RuntimeException('Exception from generator');
-            yield;
+            throw new GeneratorException('Exception from generator');
         };
 
         $shouldNext = fn() => true;
