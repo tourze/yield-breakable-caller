@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tourze\YieldBreakableCaller;
 
 /**
@@ -10,7 +12,6 @@ class BreakableCaller
     public function invoke(callable $callback, callable $shouldNext): void
     {
         // 调用回调函数执行任务
-        /** @var \Generator $generator */
         $generator = $callback();
 
         // 模拟循环迭代任务

@@ -1,15 +1,14 @@
 # YieldBreakableCaller
 
+[English](README.md) | [中文](README.zh-CN.md)
+
+[![Latest Version](https://img.shields.io/packagist/v/tourze/yield-breakable-caller.svg?style=flat-square)](https://packagist.org/packages/tourze/yield-breakable-caller)
+[![Total Downloads](https://img.shields.io/packagist/dt/tourze/yield-breakable-caller.svg?style=flat-square)](https://packagist.org/packages/tourze/yield-breakable-caller)
+[![PHP Version](https://img.shields.io/packagist/php-v/tourze/yield-breakable-caller.svg?style=flat-square)](https://packagist.org/packages/tourze/yield-breakable-caller)
+[![License](https://img.shields.io/github/license/tourze/yield-breakable-caller.svg?style=flat-square)](https://github.com/tourze/yield-breakable-caller/blob/master/LICENSE)
+[![Coverage Status](https://img.shields.io/codecov/c/github/tourze/yield-breakable-caller.svg?style=flat-square)](https://codecov.io/gh/tourze/yield-breakable-caller)
+
 A lightweight PHP library for breakable step-by-step task execution using Generators (yield). Allows interruption of task flow at any step based on custom conditions.
-
----
-
-## Project Status
-
-![Packagist Version](https://img.shields.io/packagist/v/tourze/yield-breakable-caller)
-![License](https://img.shields.io/github/license/tourze/yield-breakable-caller)
-
----
 
 ## Features
 
@@ -59,7 +58,7 @@ $caller->invoke($task, $shouldContinue);
 
 Output:
 
-```
+```text
 Step 1 executing
 Step 2 executing
 Step 3 executing
@@ -85,20 +84,24 @@ Step 3 executing
 
 ## Contributing
 
-- Issues and PRs are welcome
-- Follow PSR coding standards
-- Tests should cover main features
+We welcome contributions to improve this library. Please follow these guidelines:
 
----
+- Submit issues for bugs or feature requests
+- Follow PSR coding standards
+- Write tests for new features
+- Update documentation when needed
+
+### Development
+
+1. Clone the repository
+2. Install dependencies: `composer install`
+3. Run tests: `composer test` or `vendor/bin/phpunit`
+4. Run static analysis: `composer phpstan` or `vendor/bin/phpstan analyse`
 
 ## License
 
-MIT License
-
----
+This library is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Changelog
 
-See [CHANGELOG.md] if available.
-
-MIT
+See [CHANGELOG.md](CHANGELOG.md) for version history and updates (if available).

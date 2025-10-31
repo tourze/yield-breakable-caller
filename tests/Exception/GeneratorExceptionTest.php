@@ -1,19 +1,25 @@
 <?php
 
-namespace Tourze\YieldBreakableCaller\Tests\Unit\Exception;
+declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
+namespace Tourze\YieldBreakableCaller\Tests\Exception;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Tourze\PHPUnitBase\AbstractExceptionTestCase;
 use Tourze\YieldBreakableCaller\Exception\GeneratorException;
 
 /**
  * GeneratorException 异常类的单元测试
+ *
+ * @internal
  */
-class GeneratorExceptionTest extends TestCase
+#[CoversClass(GeneratorException::class)]
+final class GeneratorExceptionTest extends AbstractExceptionTestCase
 {
     /**
      * 测试异常能够正确创建并包含消息
      */
-    public function testException_CanBeCreatedWithMessage(): void
+    public function testExceptionCanBeCreatedWithMessage(): void
     {
         $message = 'Test exception message';
         $exception = new GeneratorException($message);
@@ -26,7 +32,7 @@ class GeneratorExceptionTest extends TestCase
     /**
      * 测试异常能够正确创建并包含消息和代码
      */
-    public function testException_CanBeCreatedWithMessageAndCode(): void
+    public function testExceptionCanBeCreatedWithMessageAndCode(): void
     {
         $message = 'Test exception message';
         $code = 500;
@@ -39,7 +45,7 @@ class GeneratorExceptionTest extends TestCase
     /**
      * 测试异常能够正确创建并包含前一个异常
      */
-    public function testException_CanBeCreatedWithPreviousException(): void
+    public function testExceptionCanBeCreatedWithPreviousException(): void
     {
         $previousException = new \Exception('Previous exception');
         $message = 'Test exception message';

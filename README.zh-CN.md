@@ -1,15 +1,14 @@
 # YieldBreakableCaller
 
+[English](README.md) | [中文](README.zh-CN.md)
+
+[![Latest Version](https://img.shields.io/packagist/v/tourze/yield-breakable-caller.svg?style=flat-square)](https://packagist.org/packages/tourze/yield-breakable-caller)
+[![Total Downloads](https://img.shields.io/packagist/dt/tourze/yield-breakable-caller.svg?style=flat-square)](https://packagist.org/packages/tourze/yield-breakable-caller)
+[![PHP Version](https://img.shields.io/packagist/php-v/tourze/yield-breakable-caller.svg?style=flat-square)](https://packagist.org/packages/tourze/yield-breakable-caller)
+[![License](https://img.shields.io/github/license/tourze/yield-breakable-caller.svg?style=flat-square)](https://github.com/tourze/yield-breakable-caller/blob/master/LICENSE)
+[![Coverage Status](https://img.shields.io/codecov/c/github/tourze/yield-breakable-caller.svg?style=flat-square)](https://codecov.io/gh/tourze/yield-breakable-caller)
+
 一个基于 PHP Generator (yield) 实现的可中断调用器，支持在任务执行过程中根据自定义条件中断。
-
----
-
-## 项目状态
-
-![Packagist Version](https://img.shields.io/packagist/v/tourze/yield-breakable-caller)
-![License](https://img.shields.io/github/license/tourze/yield-breakable-caller)
-
----
 
 ## 功能特性
 
@@ -59,7 +58,7 @@ $caller->invoke($task, $shouldContinue);
 
 输出：
 
-```
+```text
 步骤 1 开始执行
 步骤 2 开始执行
 步骤 3 开始执行
@@ -85,18 +84,24 @@ $caller->invoke($task, $shouldContinue);
 
 ## 贡献指南
 
-- 欢迎通过 Issue 或 PR 贡献代码
-- 遵循 PSR 代码规范
-- 测试需覆盖主要功能
+欢迎为这个库做出贡献。请遵循以下准则：
 
----
+- 提交 Issue 报告错误或功能请求
+- 遵循 PSR 代码规范
+- 为新功能编写测试
+- 更新文档（如有需要）
+
+### 开发环境
+
+1. 克隆仓库
+2. 安装依赖：`composer install`
+3. 运行测试：`composer test` 或 `vendor/bin/phpunit`
+4. 运行静态分析：`composer phpstan` 或 `vendor/bin/phpstan analyse`
 
 ## 版权和许可
 
-- MIT License
-
----
+该库采用 MIT 许可证。详情请参阅 [LICENSE](LICENSE) 文件。
 
 ## 更新日志
 
-详见 [CHANGELOG.md]（如有）
+版本历史和更新请参见 [CHANGELOG.md](CHANGELOG.md)（如有）。
